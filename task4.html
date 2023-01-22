@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task4</title>
+    <style>
+        #c{
+            background-color: red;
+        }
+    </style>
+    <link rel="stylesheet" href="task4.css">
+</head>
+<body>
+    <h1>Interface Corona</h1>
+    <div class="contain">
+    <input type="text" id="text">
+    <br>
+    <button id="b">ajouter</button>
+    <br>
+    Enregistrees
+    <ul id="e"></ul>
+    vaccinees
+    <ul id="v"></ul>
+</div>
+</body>
+<script>
+    let input=document.querySelector("input")
+    let enr=document.querySelector("#e")
+    let vac=document.querySelector("#v")
+    let button=document.querySelector("button")
+    button.addEventListener("click", ajout);
+    function ajout(){
+        if(input.value.length==0){
+            alert("ajouter le nom et le prenom ");
+        }
+        else{
+            enr.innerHTML += `<li> ${input.value}  <button onclick="vaccine(e),supprime(this)">×</button></li>`;
+
+        }
+    input.value="";    
+
+    }
+    input.addEventListener("keypress", function(event) {
+  
+            if (event.key === "Enter") {
+                event.preventDefault();
+                button.click();
+    }})
+    function vaccine(e){
+        
+        vac.innerHTML+=`<li>  <button onclick="supprime(this)" id="c">×</button></li>`;
+        
+        
+        
+    }
+    function supprime(b){
+        b.parentElement.remove();
+
+    }
+</script>
+</html>
